@@ -1,0 +1,9 @@
+applied_templates:
+- inputs:
+    add_routing: true
+  template_data_path: matter-web-react/web-react-app-template
+global_computed_inputs: {}
+global_inputs:
+  project_name: stackspot-shortlink
+stack: matter-web-react
+stack_type: app
