@@ -9,15 +9,15 @@ import {
   FormItem,
   Input,
   Text
-} from '@citric/core/dist'
-import React, { useEffect, useState } from 'react'
+} from '@citric/core'
+import React from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import { Visibility } from 'src/types/visibility'
 
-type FormValues = {
-  id: string
+interface FormValues {
+  id?: string
   short: string
   url: string
 }
@@ -30,7 +30,16 @@ interface Props {
 const FormLink: React.FC<Props> = ({ visibility, values, modal }) => {
   const schema = yup
     .object({
-      short: yup.string().required('Campo obrigatório'),
+      id: yup.string(),
+      short: yup
+        .string()
+        .test(
+          'short',
+          'Campo não pode conter espaços em branco',
+          (value) => !value?.includes(' ')
+        )
+        .trim('Campo não pode ter espaços em branco')
+        .required('Campo obrigatório'),
       url: yup
         .string()
         .url('o campo deve ser uma URL válida')

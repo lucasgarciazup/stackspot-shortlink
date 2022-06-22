@@ -6,7 +6,6 @@ import {
   Dropdown,
   DropdownItem,
   Flex,
-  Image,
   LinkBox,
   Text
 } from '@citric/core'
@@ -75,7 +74,7 @@ const PageHeader = ({ bg = 'light.400' }: Props) => {
                 display: ['flex', isOpen ? 'flex' : 'none']
               }}
             >
-              <Box pl={5} mt={[0, 0, 5]}>
+              <Box pl={5} mt={[0, 0, 5]} sx={{ position: 'relative' }}>
                 <Avatar size="sm" onClick={() => setVisible(true)}>
                   Lucas
                 </Avatar>
@@ -83,24 +82,14 @@ const PageHeader = ({ bg = 'light.400' }: Props) => {
                   visible={visible}
                   sx={{
                     position: 'absolute',
-                    width: '100px'
+                    width: '100px',
+                    right: 0,
+                    mt: '10px'
                   }}
                   onClose={() => setVisible(false)}
                 >
-                  <DropdownItem>
-                    <Text appearance="body2" colorScheme="light.contrastText">
-                      Option
-                    </Text>
-                  </DropdownItem>
-                  <DropdownItem>
-                    <Text appearance="body2" colorScheme="light.contrastText">
-                      Option
-                    </Text>
-                  </DropdownItem>
-                  <DropdownItem>
-                    <Text appearance="body2" colorScheme="light.contrastText">
-                      Option
-                    </Text>
+                  <DropdownItem onClick={() => alert('logout')}>
+                    <Text>Logout</Text>
                   </DropdownItem>
                 </Dropdown>
               </Box>

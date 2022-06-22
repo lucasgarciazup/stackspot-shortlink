@@ -1,3 +1,4 @@
+import React, { ChangeEvent, useCallback, useState } from 'react'
 import {
   Button,
   Card,
@@ -10,22 +11,55 @@ import {
   Text,
   Th,
   Thead,
-  Tr
+  Tr,
+  usePagination
 } from '@citric/core'
 import InputFilter from 'components/InputFilter'
+import ViewMore from 'components/ViewMore'
 import FormEditModal from 'containers/FormEditModal'
-import React, { ChangeEvent, useCallback, useState } from 'react'
+import { Edit, Trash } from '@citric/icons/dist'
+
+const listItems = [
+  {
+    short: 'javascript',
+    url: 'google.com.br'
+  },
+  {
+    short: 'typescript',
+    url: 'google.com.br'
+  },
+  {
+    short: 'java',
+    url: 'google.com.br'
+  },
+  {
+    short: 'cloud',
+    url: 'google.com.br'
+  },
+  {
+    short: 'aws',
+    url: 'google.com.br'
+  },
+  {
+    short: 'charp',
+    url: 'google.com.br'
+  }
+]
 
 const ListLink: React.FC = () => {
-  const [data, setData] = useState(
-    Array(10).fill({
-      short: 'alksmd',
-      url: 'google.com.br'
-    })
-  )
+  const [dataShow, setDataShow] = useState(listItems)
+  const { data, canViewMore, viewMore } = usePagination({
+    data: dataShow,
+    initialState: 1,
+    contentPerPage: 4
+  })
   const [openModal, setOpenModal] = useState(null)
   const debouncedChangeHandler = useCallback((term: string) => {
-    console.log(term)
+    setDataShow(
+      listItems.filter((el) =>
+        el.short.toLowerCase().includes(term.toLowerCase())
+      )
+    )
   }, [])
 
   return (
@@ -46,7 +80,7 @@ const ListLink: React.FC = () => {
                 <Tr>
                   <Th>Shortlink</Th>
                   <Th>Url</Th>
-                  <Th sx={{ width: '10%', textAlign: 'center' }}>Ação</Th>
+                  <Th sx={{ width: '12%', textAlign: 'center' }}>Ação</Th>
                 </Tr>
               </Thead>
               <Tbody>
@@ -59,8 +93,17 @@ const ListLink: React.FC = () => {
                       </Link>
                     </Td>
                     <Td>
-                      <Button block onClick={() => setOpenModal(el)}>
-                        Editar
+                      <Button
+                        colorScheme="warning"
+                        onClick={() => setOpenModal(el)}
+                      >
+                        <Edit />
+                      </Button>
+                      <Button
+                        colorScheme="danger"
+                        onClick={() => alert(`deletar ${el.short}`)}
+                      >
+                        <Trash />
                       </Button>
                     </Td>
                   </Tr>
@@ -72,6 +115,8 @@ const ListLink: React.FC = () => {
           )}
         </CardContent>
       </Card>
+
+      <ViewMore canViewMore={canViewMore} viewMore={viewMore} />
       {!!openModal && (
         <FormEditModal
           onCloseModal={() => setOpenModal(null)}
