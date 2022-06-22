@@ -2,6 +2,8 @@ applied_templates:
 - inputs:
     add_routing: true
   template_data_path: matter-web-react/web-react-app-template
+- inputs: {}
+  template_data_path: uxservices-web-react/web-react-citric-plugin
 global_computed_inputs: {}
 global_inputs:
   project_name: stackspot-shortlink
