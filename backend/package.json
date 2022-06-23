@@ -1,0 +1,8 @@
+{
+  "name": "backend",
+  "version": "0.0.1",
+  "scripts": {
+    "infra:format:fix": "cd infra && npm run format:fix",
+    "infra:build:cdk": "cd infra && npm run build && npm run cdk synth"
+  }
+}

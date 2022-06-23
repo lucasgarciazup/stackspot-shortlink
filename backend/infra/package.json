@@ -1,0 +1,82 @@
+{
+  "name": "api-shortlink",
+  "version": "0.0.1",
+  "bin": {
+    "typescript": "bin/api-shortlink-bin.js"
+  },
+  "main": "lib/service-nameservice-stack.js",
+  "types": "lib/service-name-service-stack.d.ts",
+  "scripts": {
+    "build": "jsii",
+    "package": "jsii-pacmak",
+    "lint": "eslint --ext=ts .",
+    "test": "jest",
+    "watch": "jsii -w",
+    "cdk": "cdk",
+    "local": "cdklocal",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write ."
+  },
+  "author": {
+    "name": "TODO",
+    "email": "",
+    "url": "https://github.com/TODO"
+  },
+  "repository": {
+    "url": "https://github.com/username/TODO",
+    "type": "git"
+  },
+  "devDependencies": {
+    "@types/jest": "27.5.2",
+    "@types/node": "16.11.39",
+    "@types/prettier": "2.6.0",
+    "@types/uuid": "^8.3.4",
+    "@typescript-eslint/eslint-plugin": "5.27.1",
+    "@typescript-eslint/parser": "5.27.1",
+    "aws-cdk": "^2.23.0",
+    "aws-cdk-lib": "2.23.0",
+    "aws-cdk-local": "2.15.0",
+    "constructs": "10.1.33",
+    "eslint": "8.17.0",
+    "eslint-config-airbnb-base": "15.0.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-prettier": "4.0.0",
+    "jest": "27.5.1",
+    "jsii": "1.60.0",
+    "jsii-pacmak": "1.60.0",
+    "ts-jest": "27.1.5",
+    "ts-node": "10.8.1",
+    "typescript": "4.5.5"
+  },
+  "dependencies": {
+    "@types/aws-lambda": "8.10.99",
+    "aws-cdk-lib": "2.23.0",
+    "aws-sdk": "^2.1160.0",
+    "constructs": "10.1.33",
+    "prettier": "2.4.1",
+    "source-map-support": "0.5.21",
+    "uuid": "^8.3.2"
+  },
+  "peerDependencies": {
+    "aws-cdk-lib": "2.23.0",
+    "constructs": "10.1.33"
+  },
+  "license": "MIT",
+  "jsii": {
+    "outdir": "dist",
+    "targets": {},
+    "excludeTypescript": [
+      "test/**/expected-src",
+      "src",
+      "generated-src",
+      "templates/typescript",
+      "test/**/resource-authorization-src"
+    ]
+  },
+  "bundleDependencies": [
+    "@types/aws-lambda",
+    "source-map-support",
+    "prettier"
+  ]
+}

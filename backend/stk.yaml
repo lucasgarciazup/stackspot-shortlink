@@ -1,0 +1,9 @@
+applied_templates:
+- inputs: {}
+  template_data_path: crystal-typescript-api-stack/app-typescript-template
+global_computed_inputs: {}
+global_inputs:
+  project_name: backend
+  service_name: api-shortlink
+stack: crystal-typescript-api-stack
+stack_type: app
